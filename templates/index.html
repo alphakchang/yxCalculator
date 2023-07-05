@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
                 <h2 class="text-center"><i class="bi bi-calculator"></i> Yuxin Calculator <i class="bi bi-calculator"></i></h2>
                 <div class="row justify-content-center">
                     <div class="col-lg-10 mt-3">
-                        <form>
+                        <form id="form">
                             <label for="lead_hours" class="form-label fw-bold">Lead Hours:</label>
                             <div class="mb-4 input-group">
                                 <span class="input-group-text">
@@ -28,69 +28,78 @@
                                 </span>
                                 <input type="number" class="form-control" id="lead_hours" name="lead_hours" value="0" min="0" step="0.01" required>
                                 <span class="input-group-text">hours</span>
-                                <input type="number" class="form-control" id="lead_rates" name="lead_rates" value="60" required>
-                                <span class="input-group-text">$ per hour</span>
-                            </div>
-        
-                            <label for="tester_hours" class="form-label fw-bold">Tester Hours:</label>
-                            <div class="mb-4 input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-clock"></i>
-                                </span>
-                                <input type="number" class="form-control" id="tester_hours" name="tester_hours" value="0" min="0" step="0.01" required>
-                                <span class="input-group-text">hours</span>
-                                <input type="number" class="form-control" id="tester_rates" name="tester_rates" value="38" required>
-                                <span class="input-group-text">$ per hour</span>
-                            </div>
-        
-                            <label for="misc_hours" class="form-label fw-bold">Misc Hours:</label>
-                            <div class="mb-4 input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-clock"></i>
-                                </span>
-                                <input type="number" class="form-control" id="misc_hours" name="misc_hours" value="0" min="0" step="0.01" required>
-                                <span class="input-group-text">hours</span>
-                                <input type="number" class="form-control" id="misc_rates" name="misc_rates" value="38" required>
+                                <input type="number" class="form-control" id="lead_rate" name="lead_rate" value="60" required>
                                 <span class="input-group-text">$ per hour</span>
                             </div>
 
+                            <label for="lead_misc" class="form-label fw-bold">Lead Misc:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="lead_misc" name="lead_misc" value="0" min="0" step="0.01" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="lead_misc_rate" name="lead_misc_rate" value="60" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+        
+                            <label for="test_hours" class="form-label fw-bold">Tester Hours:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="test_hours" name="test_hours" value="0" min="0" step="0.01" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="test_rate" name="test_rate" value="38" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+
+                            <label for="test_misc" class="form-label fw-bold">Tester Misc:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="test_misc" name="test_misc" value="0" min="0" step="0.01" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="test_misc_rate" name="test_misc_rate" value="38" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+
+                            <!-- New Misc Lines added to this div below -->
+                            <div id="misc_lines" class="mb-4"></div>
+
+                            <!-- Add Misc Line button -->
+                            <div class="mb-4 text-start">
+                                <button type="button" class="btn btn-success" id="add_misc_line"><i class="bi bi-plus-lg"></i> Add Other Misc Line</button>
+                            </div>
+
+                            <!-- Calculate button -->
                             <div class="mb-4 text-center">
-                                <button type="submit" class="btn btn-secondary">Calculate</button>
+                            <button type="submit" class="btn btn-secondary">Calculate</button>
                             </div>
 
-                            <label for="lead_hours" class="form-label fw-bold">Total Cost:</label>
+                            <!-- The result will be displayed here -->
+                            <label for="calculation" class="form-label fw-bold">Cost Calculation:</label>
                             <p id="result"></p>
+
                         </form>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="./static/script.js"></script>
     <script>
-        // Get the form
-        const form = document.querySelector('form');
-        // Get the result element
-        const result = document.querySelector('#result');
+        // Add a misc line when the button is clicked
+        document.getElementById("add_misc_line").addEventListener("click", function() {
+            addMiscLine();
+        });
 
-        // Add event listener to the form
-        form.addEventListener('submit', function(e) {
-            // Prevent the default behavior of the form
+        // Calculate the cost when the form is submitted
+        document.getElementById("form").addEventListener("submit", function(e) {
             e.preventDefault();
-
-            // Get the values of the inputs
-            const lead_hours = document.querySelector('#lead_hours').value;
-            const lead_rates = document.querySelector('#lead_rates').value;
-            const tester_hours = document.querySelector('#tester_hours').value;
-            const tester_rates = document.querySelector('#tester_rates').value;
-            const misc_hours = document.querySelector('#misc_hours').value;
-            const misc_rates = document.querySelector('#misc_rates').value;
-
-            // Calculate the total cost
-            const total_cost = lead_hours * lead_rates + tester_hours * tester_rates + misc_hours * misc_rates;
-
-            // Display the result
-            result.innerHTML = `<span class="fw-bold">$${total_cost.toFixed(2)}</span>`;
+            calculate();
         });
     </script>
 </body>
