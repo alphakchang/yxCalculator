@@ -31,6 +31,7 @@ function addMiscLine() {
     misc_line_input.setAttribute('type', 'number');
     misc_line_input.setAttribute('name', 'misc_amounts');
     misc_line_input.setAttribute('value', '0');
+    misc_line_input.setAttribute('step', '0.01');
     misc_lines.appendChild(misc_line_input);
 
 }
