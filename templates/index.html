@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,14 +19,14 @@
             <div class="col-lg-8 border border-2 border-primary-subtle rounded p-3">
                 <h2 class="text-center"><i class="bi bi-calculator"></i> Yuxin Calculator <i class="bi bi-calculator"></i></h2>
                 <div class="row justify-content-center">
-                    <div class="col-lg-10">
+                    <div class="col-lg-10 mt-3">
                         <form>
                             <label for="lead_hours" class="form-label fw-bold">Lead Hours:</label>
                             <div class="mb-4 input-group">
                                 <span class="input-group-text">
                                     <i class="bi bi-clock"></i>
                                 </span>
-                                <input type="number" class="form-control" id="lead_hours" name="lead_hours" value="0" min="0" step="0.5" required>
+                                <input type="number" class="form-control" id="lead_hours" name="lead_hours" value="0" min="0" step="0.01" required>
                                 <span class="input-group-text">hours</span>
                                 <input type="number" class="form-control" id="lead_rates" name="lead_rates" value="60" required>
                                 <span class="input-group-text">$ per hour</span>
@@ -37,7 +37,7 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-clock"></i>
                                 </span>
-                                <input type="number" class="form-control" id="tester_hours" name="tester_hours" value="0" min="0" step="0.5" required>
+                                <input type="number" class="form-control" id="tester_hours" name="tester_hours" value="0" min="0" step="0.01" required>
                                 <span class="input-group-text">hours</span>
                                 <input type="number" class="form-control" id="tester_rates" name="tester_rates" value="38" required>
                                 <span class="input-group-text">$ per hour</span>
@@ -48,7 +48,7 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-clock"></i>
                                 </span>
-                                <input type="number" class="form-control" id="misc_hours" name="misc_hours" value="0" min="0" step="0.5" required>
+                                <input type="number" class="form-control" id="misc_hours" name="misc_hours" value="0" min="0" step="0.01" required>
                                 <span class="input-group-text">hours</span>
                                 <input type="number" class="form-control" id="misc_rates" name="misc_rates" value="38" required>
                                 <span class="input-group-text">$ per hour</span>
