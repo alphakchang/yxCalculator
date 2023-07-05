@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Yuxin Calculator</title>
+</head>
+<body>
+    <!-- A form that takes 3 inputs, lead_hours, tester_hours, and misc_hours, and calculates the price.
+        lead_hours = $60/hour 
+        tester_hours = $38/hour
+        misc_hours = $38/hour
+        The hourly rates are set as above by default, but user is allowed to change them -->
+
+    <div class="container-lg my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 border border-2 border-primary-subtle rounded p-3">
+                <h2 class="text-center"><i class="bi bi-calculator"></i> Yuxin Calculator <i class="bi bi-calculator"></i></h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <form>
+                            <label for="lead_hours" class="form-label fw-bold">Lead Hours:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="lead_hours" name="lead_hours" value="0" min="0" step="0.5" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="lead_rates" name="lead_rates" value="60" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+        
+                            <label for="tester_hours" class="form-label fw-bold">Tester Hours:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="tester_hours" name="tester_hours" value="0" min="0" step="0.5" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="tester_rates" name="tester_rates" value="38" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+        
+                            <label for="misc_hours" class="form-label fw-bold">Misc Hours:</label>
+                            <div class="mb-4 input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="number" class="form-control" id="misc_hours" name="misc_hours" value="0" min="0" step="0.5" required>
+                                <span class="input-group-text">hours</span>
+                                <input type="number" class="form-control" id="misc_rates" name="misc_rates" value="38" required>
+                                <span class="input-group-text">$ per hour</span>
+                            </div>
+
+                            <div class="mb-4 text-center">
+                                <button type="submit" class="btn btn-secondary">Calculate</button>
+                            </div>
+
+                            <label for="lead_hours" class="form-label fw-bold">Total Cost:</label>
+                            <p id="result"></p>
+                        </form>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        // Get the form
+        const form = document.querySelector('form');
+        // Get the result element
+        const result = document.querySelector('#result');
+
+        // Add event listener to the form
+        form.addEventListener('submit', function(e) {
+            // Prevent the default behavior of the form
+            e.preventDefault();
+
+            // Get the values of the inputs
+            const lead_hours = document.querySelector('#lead_hours').value;
+            const lead_rates = document.querySelector('#lead_rates').value;
+            const tester_hours = document.querySelector('#tester_hours').value;
+            const tester_rates = document.querySelector('#tester_rates').value;
+            const misc_hours = document.querySelector('#misc_hours').value;
+            const misc_rates = document.querySelector('#misc_rates').value;
+
+            // Calculate the total cost
+            const total_cost = lead_hours * lead_rates + tester_hours * tester_rates + misc_hours * misc_rates;
+
+            // Display the result
+            result.innerHTML = `<span class="fw-bold">$${total_cost.toFixed(2)}</span>`;
+        });
+    </script>
+</body>
+</html>
