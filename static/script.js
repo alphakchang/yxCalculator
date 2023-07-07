@@ -1,12 +1,3 @@
-// // Get the add misc line button
-// const add_misc_line = document.querySelector('#add_misc_line');
-
-// add_misc_line.addEventListener('click', function(e) {
-//     // Prevent the default behavior of the button
-//     e.preventDefault();
-//     createMiscLine();
-// });
-
 function addMiscLine() {
     // Get the misc lines container
     const misc_lines = document.querySelector('#misc_lines');
@@ -35,50 +26,6 @@ function addMiscLine() {
     misc_lines.appendChild(misc_line_input);
 
 }
-
-// // Get the form
-// const form = document.querySelector('form');
-// // Get the result element
-// const result = document.querySelector('#result');
-
-
-// // Add event listener to the form
-// form.addEventListener('submit', function(e) {
-//     // Prevent the default behavior of the form
-//     e.preventDefault();
-
-//     // Get the values of the inputs
-//     const lead_hours = document.querySelector('#lead_hours').value;
-//     const lead_rates = document.querySelector('#lead_rates').value;
-//     const lead_misc = document.querySelector('#lead_misc').value;
-//     const lead_misc_rate = document.querySelector('#lead_misc_rate').value;
-//     const test_hours = document.querySelector('#test_hours').value;
-//     const test_rates = document.querySelector('#test_rates').value;
-//     const test_misc = document.querySelector('#test_misc').value;
-//     const test_misc_rate = document.querySelector('#test_misc_rate').value;
-
-
-
-//     // Get all of the misc amounts
-//     const misc_amounts = document.querySelectorAll('input[name="misc_amounts"]');
-
-//     // Calculate the total misc amount
-//     let total_misc_amount = 0;
-//     for (let i = 0; i < misc_amounts.length; i++) {
-//         total_misc_amount += parseFloat(misc_amounts[i].value);
-//     }
-
-//     // Calculate the total cost
-//     let total_cost = 0;
-//     total_cost += lead_hours * lead_rates;
-//     total_cost += lead_misc * lead_misc_rate;
-//     total_cost += test_hours * test_rates;
-//     total_cost += test_misc * test_misc_rate;
-//     total_cost += total_misc_amount;
-
-//     // Display the result
-//     result.innerHTML = `Total Cost: $${total_cost.toFixed(2)}`;
-// });
 
 function calculate() {
     
